@@ -1,7 +1,13 @@
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Se emplea para pdoer consumir la base de datos 
+builder.Services.AddDbContext<ApplicationModelProviderContext>(option =>
+option.UseSqlServer(builder.Configuration.GetConnectionString(""));
 
 var app = builder.Build();
 
